@@ -1,23 +1,24 @@
 {
-  "name": "react-native-sqlite-2",
-  "version": "3.1.2",
-  "description": "SQLite Storage for React Native",
+  "name": "react-native-sqlcipher-2",
+  "version": "1.0.3",
+  "description": "SQLCipher Storage for React Native",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/craftzdog/react-native-sqlite-2.git"
+    "url": "git://github.com/sreejithkrishnanr/react-native-sqlcipher-2.git"
   },
   "bugs": {
-    "url": "https://github.com/craftzdog/react-native-sqlite-2/issues"
+    "url": "https://github.com/sreejithkrishnanr/react-native-sqlcipher-2/issues"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "keywords": [
     "react-native",
-    "pouchdb"
+    "pouchdb",
+    "sqlcipher"
   ],
-  "author": "Takuya Matsuyama <hi@craftz.dog>",
+  "author": "Sreejith Krishnan R <sreejith.aruvikkara@gmail.com>",
   "license": "Apache-2.0",
   "peerDependencies": {
     "react-native": ">= 0.60.0"
@@ -28,11 +29,10 @@
     "websql": "^1.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.5.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.3",
-    "prettier": "^2.0.5"
+    "babel-jest": "23.4.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-preset-react-native": "^5",
+    "react": "16.4.1",
+    "react-native": "0.56.0"
   }
 }

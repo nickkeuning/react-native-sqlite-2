@@ -2,16 +2,24 @@ import map from 'lodash.map'
 import SQLiteResult from './SQLiteResult'
 import zipObject from 'lodash.zipobject'
 import { NativeModules, Platform } from 'react-native'
-const { RNSqlite2 } = NativeModules
-
+const { RNSqlCipher } = NativeModules;
 const os = Platform.OS
 
 function massageError(err) {
   return typeof err === 'string' ? new Error(err) : err
 }
 
-function SQLiteDatabase(name) {
-  this._name = name
+function SQLiteDatabase(args) {
+  const { name, password } = JSON.parse(args);
+  if (!name) {
+    throw `Invalid name`;
+  }
+  if (!password) {
+    throw `Invalid password`;
+  }
+  
+  this._name = name;
+  this._password = password;
 }
 
 function dearrayifyRow(res) {
@@ -93,10 +101,12 @@ SQLiteDatabase.prototype.exec = function exec(queries, readOnly, callback) {
     callback(massageError(err))
   }
 
-  RNSqlite2.exec(this._name, map(queries, arrayifyQuery), readOnly).then(
-    onSuccess,
-    onError
-  )
-}
+  RNSqlCipher.exec(
+    this._name,
+    this._password,
+    map(queries, arrayifyQuery),
+    readOnly
+  ).then(onSuccess, onError);
+};
 
 export default SQLiteDatabase

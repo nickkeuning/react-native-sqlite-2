@@ -15,5 +15,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.library      = "sqlite3"
 
-  s.dependency "React-Core"
+  s.dependency "React"
+  s.dependency "SQLCipher"
 end
+
